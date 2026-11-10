@@ -155,3 +155,23 @@
   --radius-full: 9999px;
 }
 
+
+/* colores para la sidebar */
+
+:root {
+  --ui-sidebar: var(--color-neutral-600);
+  --ui-sidebar-hover: var(--color-neutral-500);
+  --ui-sidebar-active: var(--color-neutral-500);
+}
+
+:root[data-theme="light"] {
+  --ui-sidebar: var(--color-neutral-200);
+  --ui-sidebar-hover: var(--color-neutral-300);
+  --ui-sidebar-active: var(--color-neutral-300);
+}
+
+@theme inline {
+  --color-sidebar: var(--ui-sidebar);
+  --color-sidebar-hover: var(--ui-sidebar-hover);
+  --color-sidebar-active: var(--ui-sidebar-active);
+}
