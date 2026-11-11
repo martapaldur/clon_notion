@@ -7,35 +7,47 @@ export const workspace = {
 }
 
 
-/* botones navegación principal */
+/* array navegación principal del header de la sidebar */
 
 export const primaryNavigation = [
   {
-    id: "home",
-    label: "Home",
-    icon: "house"
+    id: 'home',
+    label: 'Home',
+    icon: 'house',
+    shortcut: '⌘⌥G',
+    type: 'navigation'
   },
   {
-    id: "ai",
-    label: "Notion AI",
-    icon: "sparkles"
+    id: 'chat',
+    label: 'Chat',
+    icon: 'message-circle',
+    shortcut: '⌘⌥K',
+    type: 'navigation'
   },
   {
-    id: "meetings",
-    label: "Meetings",
-    icon: "video"
+    id: 'meetings',
+    label: 'Meetings',
+    icon: 'file-audio',
+    shortcut: '⌘⌥Y',
+    type: 'navigation'
   },
   {
-    id: "inbox",
-    label: "Inbox",
-    icon: "inbox"
+    id: 'inbox',
+    label: 'Inbox',
+    icon: 'inbox',
+    shortcut: '⌘⌥U',
+    badge: 2,
+    type: 'navigation'
   },
   {
-    id: "search",
-    label: "Search",
-    icon: "search"
+    id: 'search',
+    label: 'Search',
+    icon: 'search',
+    shortcut: '⌘K',
+    type: 'action'
   }
 ]
+
 
 
 /* botones secciones de la sidebar */

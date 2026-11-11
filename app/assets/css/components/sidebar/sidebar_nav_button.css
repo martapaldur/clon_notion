@@ -1,0 +1,78 @@
+
+@layer components {
+
+  /* ========================================
+     Botón Navegación superior del sidebar
+     ======================================== */
+
+  /* Estado: default */
+
+  .sidebar_nav_button {
+    @apply flex items-center justify-center
+      rounded-full transition-colors;
+
+    height: 36px;
+    padding: 0 4px;
+    gap: 4px;
+    background-color: transparent;
+    color: var(--ui-muted);
+    cursor: pointer;
+  }
+
+  /* Estado: Hover */
+
+  .sidebar_nav_button:hover {
+    background-color: var(--ui-sidebar-hover);
+    color: var(--ui-text);
+  }
+
+  /* Estado: Activo */
+
+  .sidebar_nav_button.is_active {
+    padding: 0 8px;
+    background-color: var(--ui-sidebar-active);
+    color: var(--ui-text);
+  }
+
+  /* Estado: Activo en hover */
+
+  .sidebar_nav_button.is_active:hover {
+    background-color: var(--ui-sidebar-active);
+  }
+
+  /* Keyboard focus */
+
+  .sidebar_nav_button:focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 2px;
+  }
+
+  /* ========================================
+     Elementos del botón
+     ======================================== */
+
+  /* Iconos */
+
+  .sidebar_nav_button_icon {
+    @apply relative flex shrink-0;
+  }
+
+  /* Label */
+
+  .sidebar_nav_button_label {
+    @apply whitespace-nowrap text-label-medium;
+  }
+
+  /* Badge de notificación */
+
+  .sidebar_nav_button_badge {
+    @apply absolute -right-2 -top-2
+      flex h-4 min-w-4 items-center
+      justify-center rounded-full px-1
+      text-label-xs;
+
+    background-color: var(--color-coral);
+    color: var(--color-neutral-100);
+  }
+
+}

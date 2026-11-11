@@ -102,7 +102,7 @@
   --text-label-small--font-weight: 500;
 
   --text-label-xs: 0.5625rem;
-  --text-label-xs--line-height: 1;
+  --text-label-xs--line-height: 1.2;
   --text-label-xs--font-weight: 600;
 
 }
@@ -162,16 +162,42 @@
   --ui-sidebar: var(--color-neutral-600);
   --ui-sidebar-hover: var(--color-neutral-500);
   --ui-sidebar-active: var(--color-neutral-500);
+  --ui-sidebar-hover-2: var(--color-neutral-400);
 }
 
 :root[data-theme="light"] {
   --ui-sidebar: var(--color-neutral-200);
   --ui-sidebar-hover: var(--color-neutral-300);
   --ui-sidebar-active: var(--color-neutral-300);
+  --ui-sidebar-hover-2: var(--color-neutral-400);
 }
 
 @theme inline {
   --color-sidebar: var(--ui-sidebar);
   --color-sidebar-hover: var(--ui-sidebar-hover);
   --color-sidebar-active: var(--ui-sidebar-active);
+}
+
+
+
+/* colores para el tooltip */
+
+:root {
+  --ui-tooltip-bg: var(--color-neutral-500);
+  --ui-tooltip-text: var(--color-neutral-100);
+  --ui-tooltip-border: var(--color-neutral-300);
+}
+
+:root[data-theme="light"] {
+  --ui-tooltip-bg: var(--color-neutral-200);
+  --ui-tooltip-text: var(--color-neutral-600);
+  --ui-tooltip-border: var(--color-neutral-300);
+}
+
+/* semanticos */
+
+@theme inline {
+  --color-tooltip-bg: var(--ui-tooltip-bg);
+  --color-tooltip-text: var(--ui-tooltip-text);
+  --color-tooltip-border: var(--ui-tooltip-border);
 }

@@ -1,0 +1,58 @@
+
+@layer components {
+
+  /* ========================================
+     LAYOUT PRINCIPAL
+     ======================================== */
+
+  .app_layout {
+    @apply flex h-dvh overflow-hidden
+           bg-page text-foreground;
+  }
+
+  /* CONTENEDOR DERECHO */
+
+  .app_layout_content {
+    @apply flex min-w-0 flex-1 flex-col;
+  }
+
+  /* HEADER */
+
+  .app_layout_header {
+    @apply flex min-w-0 shrink-0 items-center
+           bg-page;
+  }
+
+  .app_layout_header > header {
+    @apply min-w-0 flex-1;
+  }
+
+  /* MAIN */
+
+  .app_layout_main {
+    @apply min-h-0 flex-1 overflow-y-auto;
+  }
+
+  /* ========================================
+     BOTÓN PARA ABRIR SIDEBAR
+     ======================================== */
+
+  .app_layout_open_button {
+    @apply ml-2 flex size-8 shrink-0
+           items-center justify-center
+           rounded-sm text-foreground
+           hover:bg-sidebar-hover;
+
+    cursor: pointer;
+  }
+
+  .app_layout_open_icon {
+    @apply inline-flex rotate-180;
+  }
+
+  .app_layout_open_button:focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 2px;
+  }
+
+}

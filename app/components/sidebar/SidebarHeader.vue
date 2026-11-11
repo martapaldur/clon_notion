@@ -1,6 +1,7 @@
 
 <script setup>
 import UiIcon from '~/components/ui/UiIcon.vue'
+import UiTooltip from '~/components/ui/UiTooltip.vue'
 
 defineProps({
   workspace: {
@@ -8,34 +9,61 @@ defineProps({
     required: true
   }
 })
+
+const emit = defineEmits(['collapse'])
 </script>
 
 <template>
-  <div class="flex shrink-0 items-center justify-between gap-2 px-2 py-3">
+  <div class="sidebar_header">
 
-    <!-- botón workspace -->
-    <div class="flex min-w-0 items-center gap-2 rounded-sm px-2 py-1.5">
+    <!-- header del workspace -->
+    <div class="sidebar_workspace_header">
 
-      <div
-        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-coral text-label-small text-white"
+      <!-- botón del workspace-->
+      <button
+        type="button"
+        class="sidebar_workspace_button"
+        aria-label="Opciones del espacio de trabajo"
       >
-        {{ workspace.avatar }}
-      </div>
 
-      <span class="truncate text-label-medium">
-        {{ workspace.name }}
-      </span>
+        <!-- avatar/ M del perfil -->
+        <span class="sidebar_workspace_avatar">
+          {{ workspace.avatar }}
 
-      <UiIcon name="chevron-down" :size="14" />
+          <span
+            class="sidebar_workspace_status"
+            aria-hidden="true"
+          />
+        </span>
+
+        <!-- Nombre del. workspace -->
+        <span class="sidebar_workspace_name">
+          {{ workspace.name }}
+        </span>
+
+        <!-- Icono dropdown -->
+        <span class="sidebar_workspace_chevron">
+          <UiIcon name="chevron-down" :size="14" />
+        </span>
+
+      </button>
+
+      <!-- Boton para colapsar la sidebar -->
+      <UiTooltip
+        text="Close sidebar"
+        shortcut="⌘\"
+        position="right"
+      >
+        <button
+          type="button"
+          class="sidebar_header_collapse"
+          aria-label="Cerrar la barra lateral"
+          @click="emit('collapse')"
+        >
+          <UiIcon name="chevrons-left" :size="16" />
+        </button>
+      </UiTooltip>
+
     </div>
-
-    <!-- Icono para colapsar la sidebar -->
-    <span
-      class="shrink-0 p-2 text-foreground/60"
-      title="Colapsado pendiente"
-    >
-      <UiIcon name="panel-close" :size="18" />
-    </span>
-
   </div>
 </template>

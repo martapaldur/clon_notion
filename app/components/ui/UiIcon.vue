@@ -2,6 +2,7 @@
 <script setup>
 import { computed } from 'vue'
 
+/* importo los iconos de lucide vue*/
 import {
   House,
   Sparkles,
@@ -16,7 +17,10 @@ import {
   Plus,
   ChevronDown,
   ChevronRight,
-  PanelLeftClose
+  PanelLeftClose,
+  MessageCircle,
+  FileAudio,
+  ChevronsLeft
 } from 'lucide-vue-next'
 
 const props = defineProps({
@@ -30,6 +34,7 @@ const props = defineProps({
   }
 })
 
+/* objeto icons */
 const icons = {
   house: House,
   sparkles: Sparkles,
@@ -44,7 +49,10 @@ const icons = {
   plus: Plus,
   'chevron-down': ChevronDown,
   'chevron-right': ChevronRight,
-  'panel-close': PanelLeftClose
+  'panel-close': PanelLeftClose,
+  'message-circle': MessageCircle,
+  'file-audio': FileAudio,
+  'chevrons-left': ChevronsLeft
 }
 
 const selectedIcon = computed(() => {

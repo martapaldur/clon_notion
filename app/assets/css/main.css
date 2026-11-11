@@ -1,2 +1,14 @@
 @import "tailwindcss";
 @import "./tokens.css";
+
+/* componentes Layout general */
+@import "./components/layout/app_layout.css";
+
+/* componentes UI */
+@import "./components/ui/ui_tooltip.css";
+
+/* componentes Sidebar */
+@import "./components/sidebar/app_sidebar.css";
+@import "./components/sidebar/sidebar_nav_button.css";
+@import "./components/sidebar/sidebar_primary_nav.css";
+@import "./components/sidebar/sidebar_header.css";

@@ -1,0 +1,49 @@
+@layer components {
+
+  /* wrapper del tootlip */
+
+  .ui_tooltip {
+    @apply relative inline-flex shrink-0;
+  }
+
+  /* contenido del tooltip */
+
+  .ui_tooltip_content {
+    @apply absolute z-100 hidden w-max
+           px-2 py-1 bg-tooltip-bg text-tooltip-text border border-tooltip-border rounded-sm
+           text-label-small
+           whitespace-nowrap pointer-events-none;
+  }
+
+  /* shortcut del tecladotooltip */
+
+  .ui_tooltip_content > span {
+    @apply ml-1 opacity-75;
+  }
+
+  /* visibilidad del tooltip */
+
+  .ui_tooltip:hover > .ui_tooltip_content,
+  .ui_tooltip:has(:focus-visible) > .ui_tooltip_content {
+    @apply block;
+  }
+
+  /* Posiciones del tooltip */
+
+  .ui_tooltip_content.is_bottom {
+    @apply top-full left-1/2 mt-2 -translate-x-1/2;
+  }
+
+  .ui_tooltip_content.is_top {
+    @apply bottom-full left-1/2 mb-2 -translate-x-1/2;
+  }
+
+  .ui_tooltip_content.is_left {
+    @apply right-full top-1/2 mr-2 -translate-y-1/2;
+  }
+
+  .ui_tooltip_content.is_right {
+    @apply left-full top-1/2 ml-2 -translate-y-1/2;
+  }
+
+}

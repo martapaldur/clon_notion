@@ -1,0 +1,28 @@
+
+@layer components {
+
+  /* ========================================
+     PRIMARY NAVIGATION
+     ======================================== */
+
+  .sidebar_primary_nav {
+    @apply flex w-full min-w-0 shrink-0
+           items-center justify-between
+           box-border px-2 pb-3;
+
+    gap: 8px;
+  }
+
+  /* NAVEGACIÓN IZQUIERDA */
+
+.sidebar_primary_nav_group {
+  @apply flex min-w-0 items-center gap-2;
+}
+
+  /* ACCIONES DERECHA */
+
+  .sidebar_primary_nav_actions {
+    @apply ml-auto flex shrink-0 items-center;
+  }
+
+}
