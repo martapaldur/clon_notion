@@ -20,7 +20,14 @@ import {
   PanelLeftClose,
   MessageCircle,
   FileAudio,
-  ChevronsLeft
+  ChevronsLeft,
+  Ellipsis,
+  ArrowUpRight,
+  LibraryBig,
+  SquareCheck,
+  Shapes,
+  CircleHelp,
+  SquarePen
 } from 'lucide-vue-next'
 
 const props = defineProps({
@@ -52,7 +59,14 @@ const icons = {
   'panel-close': PanelLeftClose,
   'message-circle': MessageCircle,
   'file-audio': FileAudio,
-  'chevrons-left': ChevronsLeft
+  'chevrons-left': ChevronsLeft,
+  ellipsis: Ellipsis,
+  'arrow-up-right': ArrowUpRight,
+  'library-big': LibraryBig,
+  'square-check': SquareCheck,
+  shapes: Shapes,
+  'circle-help': CircleHelp,
+  'square-pen': SquarePen
 }
 
 const selectedIcon = computed(() => {

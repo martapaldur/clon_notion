@@ -1,0 +1,50 @@
+
+@layer components {
+
+  /* ========================================
+     SIDEBAR FOOTER
+     ======================================== */
+
+  .sidebar_footer {
+    @apply w-full shrink-0
+           border-t border-neutral-400/25
+           px-2 py-3;
+  }
+
+
+  /* ========================================
+     BOTÓN NEW
+     ======================================== */
+
+  /* DEFAULT */
+
+  .sidebar_footer_new_button {
+    @apply flex w-full items-center
+           justify-center gap-2
+           rounded-full px-2
+           text-label-regular
+           transition-colors;
+
+    height: 49px;
+    border: 1px solid var(--ui-sidebar-new-border);
+    background-color: var(--ui-sidebar-new-bg);
+    color: var(--ui-sidebar-new-text);
+    cursor: default;
+  }
+
+  /* HOVER */
+
+  .sidebar_footer_new_button:hover {
+    background-color: var(--ui-sidebar-new-hover-bg);
+    color: var(--ui-sidebar-new-hover-text);
+    border-color: transparent;
+  }
+
+  /* FOCUS */
+
+  .sidebar_footer_new_button:focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 2px;
+  }
+
+}

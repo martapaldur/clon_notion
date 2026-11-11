@@ -1,0 +1,130 @@
+
+@layer components {
+
+  /* ========================================
+     SIDEBAR PAGE ITEM
+     ======================================== */
+
+  /* DEFAULT */
+
+  .sidebar_page_item {
+    @apply relative flex w-full min-w-0
+           items-center rounded-sm
+           transition-colors;
+
+    min-height: 32px;
+    padding: 0 8px;
+    background-color: transparent;
+    color: var(--ui-text);
+  }
+
+  /* HOVER */
+
+  .sidebar_page_item:hover {
+    background-color: var(--ui-sidebar-hover);
+  }
+
+  /* ACTIVE */
+
+  .sidebar_page_item.is_active {
+    background-color: var(--ui-sidebar-active);
+  }
+
+
+  /* ========================================
+     CONTENIDO
+     ======================================== */
+
+  .sidebar_page_item_content {
+    @apply flex min-w-0 flex-1 items-center
+           gap-2 py-1.5;
+
+    transition: padding-left 0.15s;
+  }
+
+  /* EMOJI */
+
+  .sidebar_page_item_emoji {
+    @apply flex size-5 shrink-0 items-center
+           justify-center font-emoji;
+
+    font-size: 16px;
+  }
+
+  /* ICON */
+
+  .sidebar_page_item_icon {
+    @apply flex size-5 shrink-0 items-center
+           justify-center;
+  }
+
+  /* LABEL */
+
+  .sidebar_page_item_label {
+    @apply min-w-0 flex-1 truncate
+           text-label-regular;
+  }
+
+
+  /* ========================================
+     CHEVRON DECORATIVO
+     ======================================== */
+
+  .sidebar_page_item_chevron {
+    @apply absolute left-1 top-1/2
+           -translate-y-1/2 opacity-0
+           pointer-events-none;
+
+    color: var(--ui-muted);
+  }
+
+  /* MOSTRAR CHEVRON EN HOVER */
+
+  .sidebar_page_item:hover
+  .sidebar_page_item_chevron {
+    @apply opacity-100;
+  }
+
+  /* DESPLAZAR CONTENIDO EN HOVER */
+
+  .sidebar_page_item:hover
+  .sidebar_page_item_content {
+    padding-left: 18px;
+  }
+
+
+  /* ========================================
+     BOTONES DE ACCIÓN
+     ======================================== */
+
+  .sidebar_page_item_actions {
+    @apply hidden shrink-0 items-center gap-1;
+  }
+
+  /* MOSTRAR ACCIONES EN HOVER */
+
+  .sidebar_page_item:hover
+  .sidebar_page_item_actions {
+    @apply flex;
+  }
+
+  /* BOTONES */
+
+  .sidebar_page_item_action {
+    @apply flex size-6 shrink-0 items-center
+           justify-center rounded-sm;
+
+    border: none;
+    background-color: transparent;
+    color: var(--ui-muted);
+    cursor: default;
+    opacity: 1;
+  }
+
+  /* HOVER VISUAL */
+
+  .sidebar_page_item_action:hover {
+    background-color: var(--ui-sidebar-active);
+  }
+
+}

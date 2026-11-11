@@ -1,8 +1,8 @@
-
 <script setup>
 import { ref } from 'vue'
+import SidebarSectionHeader from './SidebarSectionHeader.vue'
 import SidebarPageItem from './SidebarPageItem.vue'
-import UiIcon from '~/components/ui/UiIcon.vue'
+import SidebarUtilityItem from './SidebarUtilityItem.vue'
 
 defineProps({
   section: {
@@ -15,36 +15,39 @@ const expanded = ref(true)
 </script>
 
 <template>
-  <section class="mb-5">
+  <section 
+    class="sidebar_section"
+    :class="`is_${section.id}`"
+  >
 
-    <!-- Título de sección -->
-    <button
-      type="button"
-      class="flex w-full items-center justify-between rounded-sm px-2 py-2 text-left text-foreground/65 hover:bg-sidebar-hover"
-      :aria-expanded="expanded"
-      @click="expanded = !expanded"
-    >
-      <span class="text-label-small">
-        {{ section.title }}
-      </span>
+    <!-- TÍTULO DE LA SECCIÓN -->
+    <SidebarSectionHeader
+      v-if="section.title"
+      :title="section.title"
+      :variant="section.headerVariant || 'pages'"
+      :expanded="expanded"
+      :actions="section.headerActions || []"
+      @toggle="expanded = !expanded"
+    />
 
-      <UiIcon
-        :name="expanded ? 'chevron-down' : 'chevron-right'"
-        :size="14"
-      />
-    </button>
-
-    <!-- elementos de sección -->
+    <!-- CONTENIDO DE LA SECCIÓN -->
     <nav
       v-if="expanded"
-      :aria-label="section.title"
-      class="mt-1"
+      class="sidebar_section_content"
+      :aria-label="section.title || 'Utilidades'"
     >
-      <SidebarPageItem
-        v-for="item in section.items"
-        :key="item.id"
-        :item="item"
-      />
+
+    <component
+      :is="
+        section.itemVariant === 'utility'
+          ? SidebarUtilityItem
+          : SidebarPageItem
+      "
+      v-for="item in section.items"
+      :key="item.id"
+      :item="item"
+    />
+
     </nav>
 
   </section>

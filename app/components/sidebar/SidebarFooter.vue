@@ -1,19 +1,24 @@
-
 <script setup>
 import UiIcon from '~/components/ui/UiIcon.vue'
 </script>
 
 <template>
-  <footer class="shrink-0 border-t border-neutral-400/25 p-3">
+  <footer class="sidebar_footer">
 
+    <!-- NEW BUTTON -->
     <button
       type="button"
-      disabled
-      title="Creación de páginas pendiente"
-      class="flex w-full items-center justify-center gap-2 rounded-full bg-sidebar-active px-4 py-3 text-label-medium opacity-70"
+      class="sidebar_footer_new_button"
+      aria-disabled="true"
     >
-      <UiIcon name="plus" :size="18" />
+
+      <UiIcon
+        name="square-pen"
+        :size="18"
+      />
+
       <span>New</span>
+
     </button>
 
   </footer>

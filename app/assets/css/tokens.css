@@ -1,8 +1,12 @@
+
 /* ========================================
-   Colores
+   01. DESIGN TOKENS — PRIMITIVOS
    ======================================== */
 
 @theme {
+
+  /* COLORES */
+
   --color-neutral-100: #FFFFFF;
   --color-neutral-200: #F1F0EE;
   --color-neutral-300: #B5B2AE;
@@ -13,42 +17,9 @@
 
   --color-coral: #E56458;
   --color-coral-light: #FDF6F6;
-}
 
 
-/* temas para modo oscuro (es el que hay por defecto) */
-:root {
-  color-scheme: dark;
-
-  --ui-bg: var(--color-neutral-600);
-  --ui-text: var(--color-neutral-100);
-}
-
-/* temas para modo claro */
-:root[data-theme="light"] {
-  color-scheme: light;
-
-  --ui-bg: var(--color-neutral-100);
-  --ui-text: var(--color-neutral-600);
-}
-
-/* TAILWIND */
-@theme inline {
-  --color-page: var(--ui-bg);
-  --color-foreground: var(--ui-text);
-}
-
-
-
-
-
-/* ========================================
-   Tipografía
-   ======================================== */
-
-@theme {
-
-  /* Variables familias tipográficas */
+  /* FAMILIAS TIPOGRÁFICAS */
 
   --font-ui: -apple-system, BlinkMacSystemFont,
     "SF Pro Text", "SF Pro Display", sans-serif;
@@ -105,8 +76,154 @@
   --text-label-xs--line-height: 1.2;
   --text-label-xs--font-weight: 600;
 
+
+  /* BORDER RADIUS */
+
+  --radius-none: 0px;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-full: 9999px;
+
 }
 
+
+/* ========================================
+   02. DESIGN TOKENS — SEMÁNTICOS
+   ======================================== */
+
+/* ========================================
+   DARK MODE — POR DEFECTO
+   ======================================== */
+
+:root {
+
+  color-scheme: dark;
+
+
+  /* GLOBAL */
+
+  --ui-bg: var(--color-neutral-600);
+  --ui-text: var(--color-neutral-100);
+  --ui-muted: var(--color-neutral-300);
+
+
+  /* SIDEBAR */
+
+  --ui-sidebar: var(--color-neutral-600);
+  --ui-sidebar-hover: var(--color-neutral-500);
+  --ui-sidebar-active: var(--color-neutral-500);
+  --ui-sidebar-hover-2: var(--color-neutral-400);
+  --ui-sidebar-avatar-hover: var(--color-neutral-400);
+  --ui-sidebar-section-title: var(--color-neutral-300);
+
+
+  /* SIDEBAR — NEW BUTTON */
+
+  /* Default */
+
+  --ui-sidebar-new-bg: var(--color-neutral-500);
+  --ui-sidebar-new-text: var(--color-neutral-300);
+  --ui-sidebar-new-border: var(--color-neutral-300);
+
+  /* Hover */
+
+  --ui-sidebar-new-hover-bg: var(--color-neutral-400);
+  --ui-sidebar-new-hover-text: var(--color-neutral-200);
+  --ui-sidebar-new-hover-border: transparent;
+
+
+  /* TOOLTIP */
+
+  --ui-tooltip-bg: var(--color-neutral-500);
+  --ui-tooltip-text: var(--color-neutral-100);
+  --ui-tooltip-border: var(--color-neutral-300);
+
+}
+
+
+/* ========================================
+   LIGHT MODE
+   ======================================== */
+
+:root[data-theme="light"] {
+
+  color-scheme: light;
+
+
+  /* GLOBAL */
+
+  --ui-bg: var(--color-neutral-100);
+  --ui-text: var(--color-neutral-600);
+  --ui-muted: var(--color-neutral-500);
+
+
+  /* SIDEBAR */
+
+  --ui-sidebar: var(--color-neutral-200);
+  --ui-sidebar-hover: var(--color-neutral-300);
+  --ui-sidebar-active: var(--color-neutral-300);
+  --ui-sidebar-hover-2: var(--color-neutral-400);
+  --ui-sidebar-avatar-hover: var(--color-neutral-400);
+  --ui-sidebar-section-title: var(--color-neutral-400);
+
+
+  /* SIDEBAR — NEW BUTTON */
+
+  /* Default */
+
+  --ui-sidebar-new-bg: var(--color-neutral-300);
+  --ui-sidebar-new-text: var(--color-neutral-600);
+  --ui-sidebar-new-border: var(--color-neutral-400);
+
+  /* Hover */
+
+  --ui-sidebar-new-hover-bg: var(--color-neutral-400);
+  --ui-sidebar-new-hover-text: var(--color-neutral-100);
+  --ui-sidebar-new-hover-border: transparent;
+
+
+  /* TOOLTIP */
+
+  --ui-tooltip-bg: var(--color-neutral-200);
+  --ui-tooltip-text: var(--color-neutral-600);
+  --ui-tooltip-border: var(--color-neutral-300);
+
+}
+
+
+/* ========================================
+   03. SEMANTIC TOKENS — TAILWIND
+   ======================================== */
+
+@theme inline {
+
+  /* GLOBAL */
+
+  --color-page: var(--ui-bg);
+  --color-foreground: var(--ui-text);
+  --color-muted: var(--ui-muted);
+
+
+  /* SIDEBAR */
+
+  --color-sidebar: var(--ui-sidebar);
+  --color-sidebar-hover: var(--ui-sidebar-hover);
+  --color-sidebar-active: var(--ui-sidebar-active);
+  --color-sidebar-section-title: var(--ui-sidebar-section-title);
+
+
+  /* TOOLTIP */
+
+  --color-tooltip-bg: var(--ui-tooltip-bg);
+  --color-tooltip-text: var(--ui-tooltip-text);
+  --color-tooltip-border: var(--ui-tooltip-border);
+
+}
+
+
+/* ========================================
+   04. TYPOGRAPHY — BASE STYLES
+   ======================================== */
 
 @layer base {
 
@@ -138,66 +255,4 @@
     @apply text-paragraph;
   }
 
-}
-
-
-
-
-
-/* ========================================
-   Border radius 
-   ======================================== */
-
-@theme {
-  --radius-none: 0px;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-full: 9999px;
-}
-
-
-/* colores para la sidebar */
-
-:root {
-  --ui-sidebar: var(--color-neutral-600);
-  --ui-sidebar-hover: var(--color-neutral-500);
-  --ui-sidebar-active: var(--color-neutral-500);
-  --ui-sidebar-hover-2: var(--color-neutral-400);
-}
-
-:root[data-theme="light"] {
-  --ui-sidebar: var(--color-neutral-200);
-  --ui-sidebar-hover: var(--color-neutral-300);
-  --ui-sidebar-active: var(--color-neutral-300);
-  --ui-sidebar-hover-2: var(--color-neutral-400);
-}
-
-@theme inline {
-  --color-sidebar: var(--ui-sidebar);
-  --color-sidebar-hover: var(--ui-sidebar-hover);
-  --color-sidebar-active: var(--ui-sidebar-active);
-}
-
-
-
-/* colores para el tooltip */
-
-:root {
-  --ui-tooltip-bg: var(--color-neutral-500);
-  --ui-tooltip-text: var(--color-neutral-100);
-  --ui-tooltip-border: var(--color-neutral-300);
-}
-
-:root[data-theme="light"] {
-  --ui-tooltip-bg: var(--color-neutral-200);
-  --ui-tooltip-text: var(--color-neutral-600);
-  --ui-tooltip-border: var(--color-neutral-300);
-}
-
-/* semanticos */
-
-@theme inline {
-  --color-tooltip-bg: var(--ui-tooltip-bg);
-  --color-tooltip-text: var(--ui-tooltip-text);
-  --color-tooltip-border: var(--ui-tooltip-border);
 }

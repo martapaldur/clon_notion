@@ -1,86 +1,80 @@
 
 <script setup>
-import { ref, computed } from 'vue'
 import UiIcon from '~/components/ui/UiIcon.vue'
 
-const props = defineProps({
+defineProps({
   item: {
     type: Object,
     required: true
-  },
-  depth: {
-    type: Number,
-    default: 0
   }
-})
-
-const route = useRoute()
-const expanded = ref(false)
-
-const hasChildren = computed(() => {
-  return Boolean(props.item.children?.length)
-})
-
-const isActive = computed(() => {
-  const currentPage = route.query.page || 'clon'
-  return currentPage === props.item.id
 })
 </script>
 
 <template>
-  <div>
-    <div
-      class="flex items-center rounded-sm text-foreground hover:bg-sidebar-hover"
-      :class="{ 'bg-sidebar-active': isActive }"
-      :style="{ paddingLeft: `${depth * 12}px` }"
+  <div
+    class="sidebar_page_item"
+    :class="{ is_active: item.active === true }"
+  >
+
+    <!-- CHEVRON DECORATIVO -->
+    <span
+      class="sidebar_page_item_chevron"
+      aria-hidden="true"
     >
-      <!-- desplegar subpaginasS -->
-      <button
-        v-if="hasChildren"
-        type="button"
-        class="flex h-8 w-6 shrink-0 items-center justify-center"
-        :aria-label="expanded ? 'Contraer subpáginas' : 'Expandir subpáginas'"
-        :aria-expanded="expanded"
-        @click="expanded = !expanded"
+      <UiIcon name="chevron-right" :size="14" />
+    </span>
+
+    <!-- CONTENIDO DE LA PÁGINA -->
+    <div class="sidebar_page_item_content">
+
+      <!-- EMOJI -->
+      <span
+        v-if="item.emoji"
+        class="sidebar_page_item_emoji"
+      >
+        {{ item.emoji }}
+      </span>
+
+      <!-- ICONO -->
+      <span
+        v-else
+        class="sidebar_page_item_icon"
       >
         <UiIcon
-          :name="expanded ? 'chevron-down' : 'chevron-right'"
-          :size="14"
+          :name="item.icon || 'file'"
+          :size="18"
         />
+      </span>
+
+      <!-- NOMBRE -->
+      <span class="sidebar_page_item_label">
+        {{ item.label }}
+      </span>
+
+    </div>
+
+    <!-- BOTONES DE ACCIÓN (SOLO VISUALES) -->
+    <div class="sidebar_page_item_actions">
+
+      <button
+        type="button"
+        class="sidebar_page_item_action"
+        aria-label="Añadir página"
+        disabled
+      >
+        <UiIcon name="plus" :size="16" />
       </button>
 
-      <span v-else class="w-6 shrink-0"></span>
-
-      <!-- enlaces de navegación -->
-      <NuxtLink
-        :to="{ path: '/', query: { page: item.id } }"
-        class="flex min-w-0 flex-1 items-center gap-2 py-2 pr-2"
-        :aria-current="isActive ? 'page' : undefined"
+      <button
+        type="button"
+        class="sidebar_page_item_action"
+        aria-label="Más opciones"
+        disabled
       >
-        <span v-if="item.emoji" class="text-base">
-          {{ item.emoji }}
-        </span>
+        <UiIcon name="ellipsis" :size="16" />
+      </button>
 
-        <UiIcon
-          v-else
-          :name="item.icon || 'file'"
-          :size="17"
-        />
-
-        <span class="min-w-0 truncate text-label-regular">
-          {{ item.label }}
-        </span>
-      </NuxtLink>
     </div>
 
-    <!-- Subpáginas-->
-    <div v-if="hasChildren && expanded">
-      <SidebarPageItem
-        v-for="child in item.children"
-        :key="child.id"
-        :item="child"
-        :depth="depth + 1"
-      />
-    </div>
   </div>
 </template>

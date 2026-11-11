@@ -1,0 +1,36 @@
+
+@layer components {
+
+  /* ========================================
+     SIDEBAR SECTION
+     ======================================== */
+
+  /* CONTENEDOR DE SECCIÓN */
+
+  .sidebar_section {
+    @apply w-full mb-5;
+  }
+
+  /* CONTENIDO DE LA SECCIÓN */
+
+  .sidebar_section_content {
+    @apply flex flex-col gap-1 mt-2;
+  }
+
+  /* ========================================
+     ESPACIADOS ESPECÍFICOS
+     ======================================== */
+
+  /* NOTION APPS */
+
+  .sidebar_section.is_apps {
+    @apply mb-8;
+  }
+
+  /* UTILITIES — SIN TÍTULO */
+
+  .sidebar_section.is_utilities {
+    @apply mb-0;
+  }
+
+}

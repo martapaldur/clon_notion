@@ -12,3 +12,8 @@
 @import "./components/sidebar/sidebar_nav_button.css";
 @import "./components/sidebar/sidebar_primary_nav.css";
 @import "./components/sidebar/sidebar_header.css";
+@import "./components/sidebar/sidebar_section_header.css";
+@import "./components/sidebar/sidebar_page_item.css";
+@import "./components/sidebar/sidebar_utility_item.css";
+@import "./components/sidebar/sidebar_section.css";
+@import "./components/sidebar/sidebar_footer.css";

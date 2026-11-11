@@ -1,0 +1,56 @@
+
+@layer components {
+
+  /* ========================================
+     SIDEBAR UTILITY ITEM
+     ======================================== */
+
+  /* DEFAULT */
+
+  .sidebar_utility_item {
+    @apply flex w-full min-w-0 items-center
+           gap-2 rounded-sm p-2
+           transition-colors;
+
+    color: var(--ui-text);
+  }
+
+  /* HOVER */
+
+  .sidebar_utility_item:hover {
+    background-color: var(--ui-sidebar-hover);
+  }
+
+  /* ICONO */
+
+  .sidebar_utility_item_icon {
+    @apply flex size-5 shrink-0 items-center
+           justify-center;
+
+    color: var(--ui-muted);
+  }
+
+  /* LABEL */
+
+  .sidebar_utility_item_label {
+    @apply min-w-0 flex-1 truncate text-label-regular;
+  }
+
+  /* ICONO EXTERNO */
+
+  .sidebar_utility_item_external {
+    @apply flex size-4 shrink-0 items-center
+           justify-center opacity-0
+           transition-opacity;
+
+    color: var(--ui-muted);
+  }
+
+  /* HOVER ICONO EXTERNO */
+
+  .sidebar_utility_item:hover
+  .sidebar_utility_item_external {
+    @apply opacity-100;
+  }
+
+}
