@@ -6,6 +6,7 @@
 
 /* componentes UI */
 @import "./components/ui/ui_tooltip.css";
+@import "./components/ui/ui_button.css";
 
 /* componentes Sidebar */
 @import "./components/sidebar/app_sidebar.css";
@@ -17,3 +18,4 @@
 @import "./components/sidebar/sidebar_utility_item.css";
 @import "./components/sidebar/sidebar_section.css";
 @import "./components/sidebar/sidebar_footer.css";
+

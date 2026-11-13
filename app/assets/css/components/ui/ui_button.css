@@ -1,0 +1,14 @@
+/* estado default */
+
+.ui_button {
+    @apply inline-flex items-center justify-center gap-1 p-2;
+    @apply rounded-sm cursor-pointer;
+    @apply bg-neutral-600 text-neutral-300;
+    @apply text-sm font-normal;
+}
+
+/* estado hover */
+
+.ui_button:hover {
+    @apply bg-neutral-500 text-neutral-200;
+}

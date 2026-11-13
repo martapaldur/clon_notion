@@ -26,17 +26,17 @@
            transition-colors;
 
     height: 49px;
-    border: 1px solid var(--ui-sidebar-new-border);
-    background-color: var(--ui-sidebar-new-bg);
-    color: var(--ui-sidebar-new-text);
+    border: 1px solid var(--color-neutral-300);
+    background-color: var(--color-neutral-500);
+    color: var(--color-neutral-300);
     cursor: default;
   }
 
   /* HOVER */
 
   .sidebar_footer_new_button:hover {
-    background-color: var(--ui-sidebar-new-hover-bg);
-    color: var(--ui-sidebar-new-hover-text);
+    background-color: var(--color-neutral-400);
+    color: var(--color-neutral-200);
     border-color: transparent;
   }
 

@@ -12,13 +12,13 @@
            gap-2 rounded-sm p-2
            transition-colors;
 
-    color: var(--ui-text);
+    color: var(--color-neutral-100);
   }
 
   /* HOVER */
 
   .sidebar_utility_item:hover {
-    background-color: var(--ui-sidebar-hover);
+    background-color: var(--color-neutral-500);
   }
 
   /* ICONO */
@@ -27,7 +27,7 @@
     @apply flex size-5 shrink-0 items-center
            justify-center;
 
-    color: var(--ui-muted);
+    color: var(--color-neutral-300);
   }
 
   /* LABEL */
@@ -43,7 +43,7 @@
            justify-center opacity-0
            transition-opacity;
 
-    color: var(--ui-muted);
+    color: var(--color-neutral-300);
   }
 
   /* HOVER ICONO EXTERNO */

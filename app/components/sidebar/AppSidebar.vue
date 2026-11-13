@@ -1,152 +1,101 @@
-
 <script setup>
-import {
-  workspace,
-  primaryNavigation,
-  sidebarSections
-} from '~/data/sidebar.js'
-
-
-/* SIDEBAR WIDTH */
-
-const props = defineProps({
-  width: {
-    type: Number,
-    default: 270
-  }
-})
-
-const emit = defineEmits(['collapse', 'resize'])
-
-const sidebarElement = ref(null)
-const isResizing = ref(false)
-const sidebarLeft = ref(0)
-
-const minWidth = 270
-const maxWidth = 600
-
-
-/* LIMITAR LA ANCHURA */
-
-function clampWidth(value) {
-  return Math.min(maxWidth, Math.max(minWidth, value))
-}
-
-
-/* COMENZAR A ARRASTRAR */
-
-function startResize(event) {
-  if (event.button !== 0) return
-
-  isResizing.value = true
-
-  sidebarLeft.value =
-    sidebarElement.value.getBoundingClientRect().left
-
-  event.currentTarget.setPointerCapture(event.pointerId)
-  event.preventDefault()
-}
-
-
-/* ACTUALIZAR LA ANCHURA */
-
-function resizeSidebar(event) {
-  if (!isResizing.value) return
-
-  const newWidth = event.clientX - sidebarLeft.value
-
-  emit('resize', clampWidth(newWidth))
-}
-
-
-/* TERMINAR DE ARRASTRAR */
-
-function stopResize(event) {
-  isResizing.value = false
-
-  if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-    event.currentTarget.releasePointerCapture(event.pointerId)
-  }
-}
-
-
-/* REDIMENSIONAR CON EL TECLADO */
-
-function resizeWithKeyboard(amount) {
-  emit('resize', clampWidth(props.width + amount))
-}
-
-function setSidebarWidth(value) {
-  emit('resize', clampWidth(value))
-}
-
-
 import SidebarHeader from './SidebarHeader.vue'
 import SidebarPrimaryNav from './SidebarPrimaryNav.vue'
 import SidebarSection from './SidebarSection.vue'
 import SidebarFooter from './SidebarFooter.vue'
-import { ref } from 'vue'
+
+import {
+    workspace,
+    primaryNavigation,
+    sidebarSections
+} from '~/data/sidebar.js'
+
+import { redimensionarSidebar } from '~/composables/sidebar.js'
+
+// Recibe el ancho de inicio de la sidebar que defini en app.vue.
+defineProps({
+    width: {
+        type: Number,
+        default: 270
+    }
+})
+
+const emit = defineEmits(['collapse', 'resize'])
+
+// Cuando cambia el ancho, envia el nuevo valor a app.vue.
+const {
+    isResizing,
+    empezarArrastre,
+    moverArrastre,
+    terminarArrastre
+} = redimensionarSidebar(nuevoAncho => emit('resize', nuevoAncho))
+
 </script>
 
 
 <template>
-  <aside
-    ref="sidebarElement"
-    class="app_sidebar"
-    :class="{ is_resizing: isResizing }"
-    :style="{ '--sidebar_width': `${width}px` }"
-  >
+    <!-- CONTENEDOR DE LA SIDEBAR 
+    	:class añade una clase mientras se arrastra el borde de la sidebar
+		:style actualiza el ancho con una variable de CSS -->
+    <aside
+        class="app_sidebar"
+        :class="{ is_resizing: isResizing }"
+        :style="{ '--sidebar_width': `${width}px` }"
+    >
 
-    <!-- CABECERA FIJA -->
-    <div class="shrink-0">
+        <div class="shrink-0"> <!-- HEADER FIJO DE LA SIDEBAR -->
 
-      <SidebarHeader
-        :workspace="workspace"
-        @collapse="emit('collapse')"
-      />
+            <!-- WORKSPACE (HEADER DEL HEADER DE LA SIDEBAR)-->
+            <SidebarHeader
+                :workspace="workspace"
+                @collapse="emit('collapse')"
+            />
 
-      <SidebarPrimaryNav
-        :items="primaryNavigation"
-        :show-all-labels="width >= 460"
-      />
+            <!-- NAVEGACIÓN PRINCIPAL DE LA SIDEBAR 
+            	:show-all-labels Muestra todos los textos de los links del nav si la sidebar mide más de 460px -->
+            <SidebarPrimaryNav
+                :items="primaryNavigation"
+                :show-all-labels="width >= 460"
+            />
 
-    </div>
+        </div>
 
-    <!-- ZONA CENTRAL CON SCROLL -->
-    <div class="min-h-0 flex-1 overflow-y-auto px-2 py-3">
 
-      <SidebarSection
-        v-for="section in sidebarSections"
-        :key="section.id"
-        :section="section"
-      />
+        <div class="min-h-0 flex-1 overflow-y-auto px-2 py-3"> <!-- ZONA CENTRAL DE LA SIDEBAR CON SCROLL -->
 
-    </div>
+            <!-- recorremos el array sidebarSections con v-for para pintar todo el contenido -->
+            <SidebarSection
+                v-for="section in sidebarSections"
+                :key="section.id"
+                :section="section"
+            />
 
-    <!-- FOOTER FIJO -->
-    <SidebarFooter />
+        </div>
 
-    <!-- CONTROL DE REDIMENSIONAMIENTO -->
-    <div
-      class="sidebar_resize_handle"
-      role="separator"
-      tabindex="0"
-      aria-label="Cambiar anchura de la sidebar"
-      aria-orientation="vertical"
-      aria-valuemin="270"
-      aria-valuemax="600"
-      :aria-valuenow="width"
-      @pointerdown="startResize"
-      @pointermove="resizeSidebar"
-      @pointerup="stopResize"
-      @pointercancel="stopResize"
-      @lostpointercapture="isResizing = false"
-      @keydown.left.prevent="resizeWithKeyboard(-10)"
-      @keydown.right.prevent="resizeWithKeyboard(10)"
-      @keydown.home.prevent="setSidebarWidth(270)"
-      @keydown.end.prevent="setSidebarWidth(600)"
-    />
 
-  </aside>
+        <SidebarFooter /> <!-- FOOTER FIJO DE LA SIDEBAR -->
+
+
+        <!--
+            CONTROL DE REDIMENSIONAMIENTO DE LA SIDEBAR (repito que en esto me ha ayudado chatgpt porque no sabía)
+
+            @pointerdown: comienza el arrastre.
+            @pointermove: actualiza el ancho mientras arrastramos.
+            @pointerup: termina el arrastre.
+            @pointercancel: cancela el arrastre si se interrumpe.
+            @lostpointercapture: termina el arrastre si se pierde el control del puntero.
+
+            Las funciones están definidas en composables/sidebar.js.
+        -->
+        <div
+            class="sidebar_resize_handle"
+            aria-hidden="true"
+            @pointerdown="empezarArrastre"
+            @pointermove="moverArrastre"
+            @pointerup="terminarArrastre"
+            @pointercancel="terminarArrastre"
+            @lostpointercapture="terminarArrastre"
+        />
+
+    </aside>
 </template>
-

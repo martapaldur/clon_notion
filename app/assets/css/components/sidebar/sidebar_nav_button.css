@@ -15,29 +15,29 @@
     padding: 0 4px;
     gap: 4px;
     background-color: transparent;
-    color: var(--ui-muted);
+    color: var(--color-neutral-300);
     cursor: pointer;
   }
 
   /* Estado: Hover */
 
   .sidebar_nav_button:hover {
-    background-color: var(--ui-sidebar-hover);
-    color: var(--ui-text);
+    background-color: var(--color-neutral-500);
+    color: var(--color-neutral-100);
   }
 
   /* Estado: Activo */
 
   .sidebar_nav_button.is_active {
     padding: 0 8px;
-    background-color: var(--ui-sidebar-active);
-    color: var(--ui-text);
+    background-color: var(--color-neutral-500);
+    color: var(--color-neutral-100);
   }
 
   /* Estado: Activo en hover */
 
   .sidebar_nav_button.is_active:hover {
-    background-color: var(--ui-sidebar-active);
+    background-color: var(--color-neutral-500);
   }
 
   /* Keyboard focus */

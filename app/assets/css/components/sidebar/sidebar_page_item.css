@@ -15,19 +15,19 @@
     min-height: 32px;
     padding: 0 8px;
     background-color: transparent;
-    color: var(--ui-text);
+    color: var(--color-neutral-100);
   }
 
   /* HOVER */
 
   .sidebar_page_item:hover {
-    background-color: var(--ui-sidebar-hover);
+    background-color: var(--color-neutral-500);
   }
 
   /* ACTIVE */
 
   .sidebar_page_item.is_active {
-    background-color: var(--ui-sidebar-active);
+    background-color: var(--color-neutral-500);
   }
 
 
@@ -75,7 +75,7 @@
            -translate-y-1/2 opacity-0
            pointer-events-none;
 
-    color: var(--ui-muted);
+    color: var(--color-neutral-300);
   }
 
   /* MOSTRAR CHEVRON EN HOVER */
@@ -116,7 +116,7 @@
 
     border: none;
     background-color: transparent;
-    color: var(--ui-muted);
+    color: var(--color-neutral-300);
     cursor: default;
     opacity: 1;
   }
@@ -124,7 +124,7 @@
   /* HOVER VISUAL */
 
   .sidebar_page_item_action:hover {
-    background-color: var(--ui-sidebar-active);
+    background-color: var(--color-neutral-500);
   }
 
 }

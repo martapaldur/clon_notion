@@ -12,13 +12,13 @@
            rounded-sm p-2 transition-colors;
 
     background-color: transparent;
-    color: var(--ui-sidebar-section-title);
+    color: var(--color-neutral-300);
   }
 
   /* HOVER */
 
   .sidebar_section_header:hover {
-    background-color: var(--ui-sidebar-hover);
+    background-color: var(--color-neutral-500);
   }
 
 
@@ -79,7 +79,7 @@
     @apply inline-flex size-4 shrink-0
            items-center justify-center;
 
-    color: var(--ui-muted);
+    color: var(--color-neutral-300);
   }
 
 

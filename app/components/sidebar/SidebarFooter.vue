@@ -5,7 +5,7 @@ import UiIcon from '~/components/ui/UiIcon.vue'
 <template>
   <footer class="sidebar_footer">
 
-    <!-- NEW BUTTON -->
+    <!-- botón d NEW -->
     <button
       type="button"
       class="sidebar_footer_new_button"

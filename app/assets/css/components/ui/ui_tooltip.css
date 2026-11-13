@@ -10,7 +10,7 @@
 
   .ui_tooltip_content {
     @apply absolute z-100 hidden w-max
-           px-2 py-1 bg-tooltip-bg text-tooltip-text border border-tooltip-border rounded-sm
+           px-2 py-1 bg-neutral-500 text-neutral-100 border border-neutral-300 rounded-sm
            text-label-small
            whitespace-nowrap pointer-events-none;
   }

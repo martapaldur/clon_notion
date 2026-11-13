@@ -224,8 +224,7 @@ export const sidebarSections = [
       {
         id: "help",
         label: "Help",
-        icon: "circle-help",
-        notification: true
+        icon: "circle-help"
       },
       {
         id: "trash",
