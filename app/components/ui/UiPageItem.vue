@@ -2,37 +2,47 @@
 <script setup>
 import UiIcon from '~/components/ui/UiIcon.vue'
 
-// Recibimos los datos de cada página desde SidebarSection.vue.
+// Recibimos los datos de cada página.
 defineProps({
     item: {
         type: Object,
         required: true
+    },
+    variant: {
+        type: String,
+        default: 'sidebar'
     }
 })
 </script>
 
 <template>
-    <!-- CONTENEDOR DE LA PÁGINA 
-    	utilizamos la clase is_active si la página está seleccionada (por defecto está seleccionado clon de notion) -->
+    <!-- CONTENEDOR DE LA PÁGINA
+        utilizamos la clase is_active si la página está seleccionada (por defecto está seleccionado clon de notion) 
+        utilizamos las clases is_sidebar e is_breadcrumb para saber si el componente se usa en la sidebar o en lso breadcrumps-->
     <div
-        class="sidebar_page_item"
-        :class="{ is_active: item.active === true }"
+        class="ui_page_item"
+        :class="{
+            is_sidebar: variant === 'sidebar',
+            is_breadcrumb: variant === 'breadcrumb',
+            is_active: item.active === true && variant === 'sidebar'
+        }"
     >
 
         <!-- ICONO CHEVRON -->
         <span
-            class="sidebar_page_item_chevron"
+            v-if="variant === 'sidebar'"
+            class="ui_page_item_chevron"
             aria-hidden="true"
         >
             <UiIcon name="chevron-right" :size="14" />
         </span>
 
-        <div class="sidebar_page_item_content"> <!-- CONTENIDO DEL LABEL DE LA PÁGINA -->
+        <div class="ui_page_item_content"> <!-- CONTENIDO DEL LABEL DE LA PÁGINA -->
 
             <!-- aparece si la página tiene un emoji definido -->
             <span
                 v-if="item.emoji"
-                class="sidebar_page_item_emoji"
+                class="ui_page_item_emoji"
             >
                 {{ item.emoji }}
             </span>
@@ -40,7 +50,7 @@ defineProps({
             <!-- aparece si la página no tiene emoji defindio -->
             <span
                 v-else
-                class="sidebar_page_item_icon"
+                class="ui_page_item_icon"
             >
                 <UiIcon
                     :name="item.icon || 'file'"
@@ -49,18 +59,21 @@ defineProps({
             </span>
 
             <!-- NOMBRE DE LA PÁGINA -->
-            <span class="sidebar_page_item_label">
+            <span class="ui_page_item_label">
                 {{ item.label }}
             </span>
 
         </div>
 
-        <div class="sidebar_page_item_actions"> <!-- BOTONES DE ACCIÓN DE LOS ITEMS -->
+        <div
+            v-if="variant === 'sidebar'"
+            class="ui_page_item_actions"
+        > <!-- BOTONES DE ACCIÓN DE LOS ITEMS -->
 
             <!-- + -->
             <button
                 type="button"
-                class="sidebar_page_item_action"
+                class="ui_page_item_action"
                 aria-label="Añadir página"
                 disabled
             >
@@ -70,7 +83,7 @@ defineProps({
             <!-- ... -->
             <button
                 type="button"
-                class="sidebar_page_item_action"
+                class="ui_page_item_action"
                 aria-label="Más opciones"
                 disabled
             >

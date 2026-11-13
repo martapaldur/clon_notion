@@ -1,52 +1,42 @@
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import HeaderBreadcrumbs from './HeaderBreadcrumbs.vue'
+import UiButton from '~/components/ui/UiButton.vue'
+import { headerButtons } from '~/data/header.js'
+import { controlarTema } from '~/composables/theme.js'
 
-const theme = ref('dark')
-
-onMounted(() => {
-  theme.value =
-    document.documentElement.dataset.theme === 'light'
-      ? 'light'
-      : 'dark'
-})
-
-function toggleTheme() {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark'
-  document.documentElement.dataset.theme = theme.value
-}
+// Importamos la variable y la función para cambiar el tema de color
+const { theme, cambiarTema } = controlarTema()
 </script>
 
 <template>
-  <header
-    class="flex h-12 shrink-0 items-center justify-between border-b border-neutral-400/30 bg-page px-4"
-  >
+    <header class="app_header"> 
 
-    <!-- AQUÍ LOS BREADCRUMBS -->
-    <nav aria-label="Ruta de navegación">
-      <span class="text-label-regular">
-        Breadcrumbs
-      </span>
-    </nav>
+        <!-- BREADCRUMBS -->
+        <HeaderBreadcrumbs />
 
+        <div class="app_header_buttons"> <!-- CONTENEDOR BOTONES DERECHOS -->
 
-    <!-- AQUÍ LAS ACCIONES -->
-    <div class="flex items-center gap-4">
+            <!-- GENERAMOS LOS BOTONES DESDE EL ARRAY -->
+            <UiButton
+                v-for="item in headerButtons"
+                :key="item.id"
+                :label="item.label"
+                :icon="item.icon"
+                :tooltip="item.tooltip"
+                :shortcut="item.shortcut"
+            />
 
-      <span class="text-label-regular">
-        Acciones
-      </span>
+            <!-- BOTÓN TEMPORAL PARA CAMBIAR EL TEMA DE DARK A LIGHT -->
+            <button
+                type="button"
+                class="app_header_theme_button"
+                @click="cambiarTema"
+            >
+                {{ theme === 'dark' ? 'Light mode' : 'Dark mode' }}
+            </button>
 
-      <!-- BOTÓN TEMPORAL DE TEMA -->
-      <button
-        type="button"
-        class="rounded-md border border-neutral-400/30 px-3 py-1 text-label-small"
-        @click="toggleTheme"
-      >
-        {{ theme === 'dark' ? 'Light mode' : 'Dark mode' }}
-      </button>
+        </div>
 
-    </div>
-
-  </header>
+    </header>
 </template>

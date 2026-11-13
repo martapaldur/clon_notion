@@ -1,0 +1,44 @@
+@layer components {
+
+    /* ========================================
+       APP HEADER
+       ======================================== */
+
+    /* CONTENEDOR PRINCIPAL */
+
+    .app_header {
+        @apply flex h-12 shrink-0 items-center
+               justify-between border-b
+               border-neutral-400/30 bg-page px-4;
+    }
+
+
+    /* LIMITAR ANCHO DE LAS PÁGINAS INTERMEDIAS */
+
+    .header_breadcrumbs_item {
+        max-width: 240px;
+    }
+
+
+    /* ========================================
+       BOTONES DERECHOS
+       ======================================== */
+
+    /* CONTENEDOR */
+
+    .app_header_buttons {
+        @apply flex shrink-0 items-center gap-1;
+    }
+
+
+    /* ========================================
+       BOTÓN TEMPORAL DE TEMA
+       ======================================== */
+
+    .app_header_theme_button {
+        @apply ml-2 rounded-md border
+               border-neutral-400/30
+               px-3 py-1 text-label-small;
+    }
+
+}

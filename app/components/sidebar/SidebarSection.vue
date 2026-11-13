@@ -1,7 +1,7 @@
 
 <script setup>
 import SidebarSectionHeader from './SidebarSectionHeader.vue'
-import SidebarPageItem from './SidebarPageItem.vue'
+import UiPageItem from '~/components/ui/UiPageItem.vue'
 import SidebarUtilityItem from './SidebarUtilityItem.vue'
 import { controlarSeccion } from '~/composables/sidebar.js'
 
@@ -47,7 +47,7 @@ const {
 
             <!--recorremos el array de páginas de cada sección, :is: selecciona qué componente utilizar según el tipo de páginaa-->
             <component
-                :is="section.itemVariant === 'utility' ? SidebarUtilityItem : SidebarPageItem"
+                :is="section.itemVariant === 'utility' ? SidebarUtilityItem : UiPageItem"
                 v-for="item in section.items"
                 :key="item.id"
                 :item="item"

@@ -1,0 +1,33 @@
+
+@layer components {
+
+    /* ========================================
+       HEADER BREADCRUMBS
+       ======================================== */
+
+    /* CONTENEDOR */
+
+    .header_breadcrumbs {
+        @apply min-w-0;
+    }
+
+    /* LISTA DE PÁGINAS */
+
+    .header_breadcrumbs_list {
+        @apply flex min-w-0 items-center
+               overflow-hidden;
+    }
+
+    /* ELEMENTO DE LA LISTA */
+
+    .header_breadcrumbs_item {
+        @apply flex min-w-0 items-center;
+    }
+
+    /* SEPARADORES */
+
+    .header_breadcrumbs_separator {
+        @apply mx-1 shrink-0 text-neutral-300;
+    }
+
+}

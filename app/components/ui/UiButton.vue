@@ -1,9 +1,8 @@
-
 <script setup>
 import UiIcon from '~/components/ui/UiIcon.vue'
 import UiTooltip from '~/components/ui/UiTooltip.vue'
 
-// Propiedades del botón.
+// Propiedades del botón
 defineProps({
     label: {
         type: String,
@@ -14,6 +13,10 @@ defineProps({
         default: ''
     },
     tooltip: {
+        type: String,
+        default: ''
+    },
+    shortcut: {
         type: String,
         default: ''
     }
@@ -34,16 +37,17 @@ defineProps({
     <UiTooltip
         v-else
         :text="tooltip || label"
+        :shortcut="shortcut"
     >
         <button
             type="button"
-            class="ui_button"
+            class="ui_button has_icon"
             :aria-label="label || tooltip"
         >
             <!-- ICONO -->
             <UiIcon :name="icon" :size="18" />
 
-            <!-- TEXTO OPCIONAL -->
+            <!-- TEXTO  -->
             <span v-if="label">
                 {{ label }}
             </span>

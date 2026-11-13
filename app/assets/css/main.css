@@ -7,6 +7,7 @@
 /* componentes UI */
 @import "./components/ui/ui_tooltip.css";
 @import "./components/ui/ui_button.css";
+@import "./components/ui/ui_page_item.css";
 
 /* componentes Sidebar */
 @import "./components/sidebar/app_sidebar.css";
@@ -14,8 +15,10 @@
 @import "./components/sidebar/sidebar_primary_nav.css";
 @import "./components/sidebar/sidebar_header.css";
 @import "./components/sidebar/sidebar_section_header.css";
-@import "./components/sidebar/sidebar_page_item.css";
 @import "./components/sidebar/sidebar_utility_item.css";
 @import "./components/sidebar/sidebar_section.css";
 @import "./components/sidebar/sidebar_footer.css";
 
+/* componentes del header */
+@import "./components/header/app_header.css";
+@import "./components/header/header_breadcrumbs.css";

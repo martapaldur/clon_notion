@@ -23,7 +23,10 @@ import {
     SquareCheck,
     Shapes,
     CircleHelp,
-    SquarePen
+    SquarePen,
+    LockKeyhole,
+    Link2,
+    Star
 } from 'lucide-vue-next'
 
 // Objeto que relaciona los nombres de nuestros iconos con los componentes de Lucide vue
@@ -51,5 +54,8 @@ export const icons = {
     'square-check': SquareCheck,
     shapes: Shapes,
     'circle-help': CircleHelp,
-    'square-pen': SquarePen
+    'square-pen': SquarePen,
+    lock: LockKeyhole,
+    link: Link2,
+    star: Star
 }

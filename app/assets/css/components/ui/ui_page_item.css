@@ -1,0 +1,139 @@
+
+@layer components {
+
+    /* ========================================
+       UI PAGE ITEM
+       ======================================== */
+
+    /* DEFAULT */
+
+    .ui_page_item {
+        @apply relative flex w-full min-w-0
+               items-center rounded-sm
+               transition-colors;
+
+        min-height: 32px;
+        padding: 0 8px;
+        background-color: transparent;
+        color: var(--color-neutral-100);
+    }
+
+    /* HOVER */
+
+    .ui_page_item:hover {
+        background-color: var(--color-neutral-500);
+    }
+
+    /* ACTIVE */
+
+    .ui_page_item.is_active {
+        background-color: var(--color-neutral-500);
+    }
+
+
+    /* ========================================
+       CONTENIDO
+       ======================================== */
+
+    .ui_page_item_content {
+        @apply flex min-w-0 flex-1 items-center
+               gap-2 py-1.5;
+
+        transition: padding-left 0.15s;
+    }
+
+    /* EMOJI */
+
+    .ui_page_item_emoji {
+        @apply flex size-5 shrink-0 items-center
+               justify-center font-emoji;
+
+        font-size: 16px;
+    }
+
+    /* ICON */
+
+    .ui_page_item_icon {
+        @apply flex size-5 shrink-0 items-center
+               justify-center;
+    }
+
+    /* LABEL */
+
+    .ui_page_item_label {
+        @apply min-w-0 flex-1 truncate
+               text-label-regular;
+    }
+
+
+    /* ========================================
+       CHEVRON DECORATIVO
+       ======================================== */
+
+    .ui_page_item_chevron {
+        @apply absolute left-1 top-1/2
+               -translate-y-1/2 opacity-0
+               pointer-events-none;
+
+        color: var(--color-neutral-300);
+    }
+
+    /* MOSTRAR CHEVRON EN HOVER SOLO EN SIDEBAR */
+
+    .ui_page_item.is_sidebar:hover
+    .ui_page_item_chevron {
+        @apply opacity-100;
+    }
+
+    /* DESPLAZAR CONTENIDO EN HOVER SOLO EN SIDEBAR */
+
+    .ui_page_item.is_sidebar:hover
+    .ui_page_item_content {
+        padding-left: 18px;
+    }
+
+
+    /* ========================================
+       BOTONES DE ACCIÓN
+       ======================================== */
+
+    .ui_page_item_actions {
+        @apply hidden shrink-0 items-center gap-1;
+    }
+
+    /* MOSTRAR ACCIONES EN HOVER SOLO EN SIDEBAR */
+
+    .ui_page_item.is_sidebar:hover
+    .ui_page_item_actions {
+        @apply flex;
+    }
+
+    /* BOTONES */
+
+    .ui_page_item_action {
+        @apply flex size-6 shrink-0 items-center
+               justify-center rounded-sm;
+
+        border: none;
+        background-color: transparent;
+        color: var(--color-neutral-300);
+        cursor: default;
+        opacity: 1;
+    }
+
+    /* HOVER VISUAL */
+
+    .ui_page_item_action:hover {
+        background-color: var(--color-neutral-500);
+    }
+
+
+    /* ========================================
+       VARIANTE BREADCRUMB
+       ======================================== */
+
+    .ui_page_item.is_breadcrumb {
+        @apply w-auto;
+    }
+
+}
